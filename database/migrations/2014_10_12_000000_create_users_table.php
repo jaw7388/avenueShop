@@ -21,6 +21,19 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->string('first_name', 128);
+            $table->string('last_name', 128);
+            $table->integer('city_id')->unsigned();
+            $table->text('client_address');
+            $table->integer('role_id')->unsigned();
+
+            $table->index(["role_id"], 'client_user_roles');
+
+            $table->index(["city_id"], 'client_city');
+
+
+              
         });
     }
 
