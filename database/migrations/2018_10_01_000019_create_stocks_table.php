@@ -4,24 +4,24 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStockTable extends Migration
+class CreateStocksTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'stock';
+    
 
     /**
      * Run the migrations.
-     * @table stock
+     * @table stocks
      *
      * @return void
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('stocks', function (Blueprint $table) {
             
             $table->increments('id');
             $table->integer('product_color_id')->length(10)->unsigned();
@@ -36,6 +36,21 @@ class CreateStockTable extends Migration
 
             $table->index(["product_id"], 'stock_product');
 
+
+            $table->foreign('product_id', 'stock_product')
+                ->references('id')->on('products')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            $table->foreign('product_color_id', 'stock_product_color')
+                ->references('id')->on('products_colors')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            $table->foreign('product_size_id', 'stock_product_size')
+                ->references('id')->on('products_sizes')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 

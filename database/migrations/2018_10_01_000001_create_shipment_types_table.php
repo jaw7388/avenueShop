@@ -4,27 +4,27 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserRolesTable extends Migration
+class CreateShipmentTypesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'user_roles';
+    
 
     /**
      * Run the migrations.
-     * @table user_roles
+     * @table shipment_types
      *
      * @return void
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('shipment_types', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->integer('role');
+            $table->string('type_name', 64);
         });
     }
 

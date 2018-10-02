@@ -10,7 +10,7 @@ class CreatePaymentDetailsTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'payment_details';
+    
 
     /**
      * Run the migrations.
@@ -20,8 +20,8 @@ class CreatePaymentDetailsTable extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('payment_details', function (Blueprint $table) {
             
             $table->increments('id');
             $table->integer('shipment_id')->length(10)->unsigned();
@@ -31,7 +31,17 @@ class CreatePaymentDetailsTable extends Migration
             $table->index(["payment_data_id"], 'payment_details_payment_data');
 
             $table->index(["shipment_id"], 'payment_details_shipment');
-                        
+
+
+            $table->foreign('payment_data_id', 'payment_details_payment_data')
+                ->references('id')->on('payment_data')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            $table->foreign('shipment_id', 'payment_details_shipment')
+                ->references('id')->on('shipments')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 

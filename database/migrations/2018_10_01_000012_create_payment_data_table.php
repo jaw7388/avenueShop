@@ -10,8 +10,7 @@ class CreatePaymentDataTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'payment_data';
-
+   
     /**
      * Run the migrations.
      * @table payment_data
@@ -20,15 +19,21 @@ class CreatePaymentDataTable extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('payment_data', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->integer('payment_type_id')->unsigned();
+            $table->integer('payment_type_id')->length(10)->unsigned();
             $table->string('data_name');
             $table->string('data_type');
 
             $table->unique(["payment_type_id", "data_name"], 'payment_data_ak_1');
+
+
+            $table->foreign('payment_type_id', 'payment_data_ak_1')
+                ->references('id')->on('payment_types')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 

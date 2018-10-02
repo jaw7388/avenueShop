@@ -4,27 +4,27 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSizesTable extends Migration
+class CreatePaymentTypesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'sizes';
+    
 
     /**
      * Run the migrations.
-     * @table sizes
+     * @table payment_types
      *
      * @return void
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('payment_types', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->integer('size_name');
+            $table->string('type_name', 64);
         });
     }
 

@@ -10,7 +10,6 @@ class CreateShipmentDetailsTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'shipment_details';
 
     /**
      * Run the migrations.
@@ -20,8 +19,8 @@ class CreateShipmentDetailsTable extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('shipment_details', function (Blueprint $table) {
             
             $table->increments('id');
             $table->integer('shipment_id')->length(10)->unsigned();
@@ -34,6 +33,16 @@ class CreateShipmentDetailsTable extends Migration
 
             $table->unique(["shipment_id"], 'shipmet_details_ak_1');
 
+
+            $table->foreign('product_id', 'shipment_details_product')
+                ->references('id')->on('products')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            $table->foreign('shipment_id', 'shipmet_details_ak_1')
+                ->references('id')->on('shipments')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 

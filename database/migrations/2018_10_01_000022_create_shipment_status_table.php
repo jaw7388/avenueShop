@@ -10,7 +10,7 @@ class CreateShipmentStatusTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'shipment_status';
+    
 
     /**
      * Run the migrations.
@@ -20,8 +20,8 @@ class CreateShipmentStatusTable extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('shipment_status', function (Blueprint $table) {
             
             $table->increments('id');
             $table->integer('shipment_id')->length(10)->unsigned();
@@ -33,6 +33,16 @@ class CreateShipmentStatusTable extends Migration
 
             $table->index(["shipment_id"], 'shipment_status_shipment');
 
+
+            $table->foreign('shipment_id', 'shipment_status_shipment')
+                ->references('id')->on('shipments')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            $table->foreign('status_catalog_id', 'shipment_status_status_catalog')
+                ->references('id')->on('status_catalogs')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 
