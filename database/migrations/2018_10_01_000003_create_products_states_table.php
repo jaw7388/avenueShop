@@ -4,24 +4,24 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductStateTable extends Migration
+class CreateProductsStatesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'product_state';
+    
 
     /**
      * Run the migrations.
-     * @table product_state
+     * @table products_states
      *
      * @return void
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('products_states', function (Blueprint $table) {
             
             $table->increments('id');
             $table->integer('state');

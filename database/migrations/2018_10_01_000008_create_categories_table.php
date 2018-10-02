@@ -4,34 +4,29 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductSizeTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'product_size';
+   
 
     /**
      * Run the migrations.
-     * @table product_size
+     * @table categories
      *
      * @return void
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create( 'categories', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->integer('product_id')->length(10)->unsigned();
-            $table->integer('size_id')->length(10)->unsigned();
+            $table->integer('sub_category_id')->nullable()->default(null);
+            $table->char('name', 255);
             $table->timestamp('timestamp');
-
-            $table->index(["size_id"], 'product_size_Table_31');
-
-            $table->index(["product_id"], 'product_size_product');
-                        
         });
     }
 

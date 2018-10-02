@@ -4,24 +4,24 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShipmentTable extends Migration
+class CreateShipmentsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'shipment';
+    
 
     /**
      * Run the migrations.
-     * @table shipment
+     * @table shipments
      *
      * @return void
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('shipments', function (Blueprint $table) {
             
             $table->increments('id');
             $table->integer('user_id')->length(10)->unsigned();
@@ -40,7 +40,22 @@ class CreateShipmentTable extends Migration
             $table->index(["shipment_type_id"], 'shipment_shipment_type');
 
             $table->index(["user_id"], 'shipment_client');
-            
+
+
+            $table->foreign('user_id', 'shipment_client')
+                ->references('id')->on('users')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            $table->foreign('payment_type_id', 'shipment_payment_type')
+                ->references('id')->on('payment_types')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+
+            $table->foreign('shipment_type_id', 'shipment_shipment_type')
+                ->references('id')->on('shipment_types')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 

@@ -4,28 +4,27 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateColorsTable extends Migration
+class CreateStatusCatalogsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'colors';
+    
 
     /**
      * Run the migrations.
-     * @table colors
+     * @table status_catalogs
      *
      * @return void
      */
     public function up()
     {
-        if (Schema::hasTable($this->set_schema_table)) return;
-        Schema::create($this->set_schema_table, function (Blueprint $table) {
+        
+        Schema::create('status_catalogs', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->integer('color_name');
-            $table->integer('code');
+            $table->string('status_name');
         });
     }
 
