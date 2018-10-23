@@ -21,6 +21,9 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         'first_name' => $faker->word,
         'last_name' => $faker->lastName,
-        'client_address'=>$faker->address
+        'client_address'=>$faker->address,
+        'city_id' => App\City::all()->random()->id,
+        'role_id' => App\User_role::all()->random()->id
+        
     ];
 });
