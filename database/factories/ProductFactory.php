@@ -9,6 +9,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'product_little_description' =>$faker->sentence($nbWords = 6, $variableNbWords = true) , 
         'product_video' =>$faker->url, 
         'product_price' =>$faker->randomFloat(2, 0, 1000), 
-        'product_specs' =>$faker-> text($maxNbChars = 200)
+        'product_specs' =>$faker-> text($maxNbChars = 200),
+        'state_id' => 1
     ];
 });
