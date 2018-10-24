@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User_role;
+use App\Size;
 
-class User_rolesTableSeeder extends Seeder
+class SizesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +14,15 @@ class User_rolesTableSeeder extends Seeder
     {
         $data = array(
 			[
-				'role' => 'Administrator'
+				'size_name' => 'l'
             ],
             [
-				'role' => 'User'
-            ]
+                'size_name' => 'xl'
+            ],
+            [
+				'size_name' => 'XXL'
+            ],
             );
-        User_role::insert($data);
+        Size::insert($data);
     }
 }

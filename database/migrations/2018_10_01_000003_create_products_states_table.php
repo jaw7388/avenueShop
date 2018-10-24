@@ -24,7 +24,7 @@ class CreateProductsStatesTable extends Migration
         Schema::create('products_states', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->integer('state');
+            $table->string('state', 11);
         });
     }
 
