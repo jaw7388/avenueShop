@@ -14,10 +14,10 @@ class SizesTableSeeder extends Seeder
     {
         $data = array(
 			[
-				'size_name' => 'l'
+				'size_name' => 'L'
             ],
             [
-                'size_name' => 'xl'
+                'size_name' => 'XL'
             ],
             [
 				'size_name' => 'XXL'

@@ -8,6 +8,8 @@ class Product extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['product_name', 'product_description','product_little_description', 'product_video','product_price', 'product_specs', 'product_review_id', 'state_id' ];
-
+    protected $fillable = [
+        'product_name', 'product_description',
+        'product_little_description', 'product_video','product_price', 
+        'product_specs', 'product_review_id', 'state_id' ];
 }
