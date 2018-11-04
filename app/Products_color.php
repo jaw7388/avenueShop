@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Color extends Model
+class Products_color extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['color_name', 'code'];
+    protected $fillable = ['color_id', 'product_id']; 
 }
