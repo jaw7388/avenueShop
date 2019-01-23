@@ -10,5 +10,6 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'product_video' =>$faker->url, 
         'product_price' =>$faker->randomFloat(2, 0, 1000), 
         'product_specs' =>$faker-> text($maxNbChars = 200),
+        'state_id' => App\Products_state::all()->random()->id,
     ];
 });

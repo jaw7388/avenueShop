@@ -1,0 +1,27 @@
+"categories"
+"categories_products"
+"cities"    **
+"colors"    **
+"countries" **
+"images"    **
+"lookbooks" 
+"migrations"
+"password_resets"
+"payment_data"
+"payment_details"
+"payment_types"
+"products"
+"products_colors"
+"products_images"
+"products_reviews"
+"products_sizes"
+"products_states"
+"shipment_details"
+"shipment_status"
+"shipment_types"
+"shipments"
+"sizes"
+"status_catalogs"
+"stocks"
+"user_roles"
+"users"
