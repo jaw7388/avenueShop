@@ -25,11 +25,10 @@ class CreateCitiesTable extends Migration
             
             $table->increments('id');
             $table->string('city_name', 128);
-            $table->integer('country_id') ->length(10)->unsigned();
+            $table->integer('country_id')->length(10)->unsigned();
 
             $table->index(["country_id"], 'city_country');
-
-
+            
             $table->foreign('country_id', 'city_country')
                 ->references('id')->on('countries')
                 ->onDelete('restrict')

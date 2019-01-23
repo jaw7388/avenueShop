@@ -28,17 +28,17 @@ class CreateProductsColorsTable extends Migration
             $table->integer('color_id')->length(10)->unsigned();
             $table->timestamp('timestamp');
 
-            $table->index(["product_id"], 'product_color_product');
+            $table->index(["product_id"], 'product');
 
-            $table->index(["color_id"], 'product_color_Table_32');
+            $table->index(["color_id"], 'product_color');
 
 
-            $table->foreign('color_id', 'product_color_Table_32')
+            $table->foreign('color_id', 'product_color')
                 ->references('id')->on('colors')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
 
-            $table->foreign('product_id', 'product_color_product')
+            $table->foreign('product_id', 'product')
                 ->references('id')->on('products')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
