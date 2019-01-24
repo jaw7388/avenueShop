@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Products_sizesSeeder extends Seeder
+class Products_colorsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,14 +12,10 @@ class Products_sizesSeeder extends Seeder
     public function run()
     {
         for ($i = 0; $i <= 50; $i++) {
-            DB::table('products_sizes')->insert([
+            DB::table('products_colors')->insert([
                 'product_id'=> App\Product::all()->random()->id, 
-                'size_id'=> App\Size::all()->random()->id
+                'color_id'=> App\Color::all()->random()->id
            ]);
         }
-        
-
     }
 }
-
-
